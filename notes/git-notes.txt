@@ -1,0 +1,11 @@
+git
+    git clone git@github.com:user/repo-name.git
+    git status
+    git push origin making
+    git commit -m "Note"
+    
+    Commit early and often.  Everytime there is a large change, commit.
+
+    Then push at natural stopping points.
+
+

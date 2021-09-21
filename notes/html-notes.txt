@@ -44,17 +44,3 @@ File Structure
         [Good for anything NOT a photo or animated.  Good with opacity.  Good for icons, diagrams and logos.]
     svg 
         [All other formats are pixel based, but svg is vector based.  Can scale to any dimension without loss of quality.  Can be used for anything.  try to use whenever possible.  pitfall svgs can create huge file sizes with text or screen shots, so be carefule]
-
-
-
-git
-    git clone git@github.com:user/repo-name.git
-    git status
-    git push origin making
-    git commit -m "Note"
-    
-    Commit early and often.  Everytime there is a large change, commit.
-
-    Then push at natural stopping points.
-
-
