@@ -1,0 +1,66 @@
+fundamental css structure 
+
+selector {
+  property: value;
+}
+
+Selectors determine which items the property is going to effect.
+
+Common selectors
+	*: universal: selects all types
+	name: type selector; example = div as selector selects all divs.
+	class:  add the class attribute to any html element to have it selected by  css.  			Selector start with a (.)  elements can have multiple classes, seperated by 			white space
+		<div class = "alert-text"> </div>
+		.alert-text {
+			color: red;
+			}
+	id: same as class but uses id attribute and a # in the selector.  Avoid ids, they cause problems.
+	grouping:  where selectors share multiple properties, you can combine them as a comma seperated list, and list there shared properties.
+		.read,
+		.unread {
+			color: white;
+			background-color: black;
+		}
+		.read {
+			/* unique declarations */
+		}
+		.unread {
+			/* unique declarations */
+		}
+	chaining: can get more specific in selector:  .subsection.header {...}
+	descendant combinator:  selects ONLY the child of an element:  this can get confusing, use sparingly
+		.ancestor .contents {...}
+		
+Common properties
+	color: sets elements text color
+		can accept: named color (red), hex(#ff0000), rgb(rgb(255, 0, 0)), hsl(hsl(0, 100%, 50%))
+	
+	background-color: sets elements background color
+	font-family: can be single or a comma seperated list.  if browser can't find this first one, it will go through the list.
+	font-size: set size of font: unit px (22px)
+	font-weight: set boldness of font: num between 1-1000 (700 is bold)
+	text-align: align text horizontally in an element: center, left, right
+	height, width: can apply to images: good practice to always declare these on a webpage.  this will reserve the space on the page for when the image loads in.
+	
+
+cascade: the order in which styles get rendered.
+	when there are multiple styles, specificity comes into play.  the most SPECIFIC selector wins.  more selectors make it more specific.  the last item in the file is more the final determiner if all other factorrs tie.
+	
+To declare an external css file (most common method):
+	<head>
+		<link rel="stylesheet" href="styles.css" />
+	</head>
+	
+Declare internal css (good if style is only one page):
+	<head>
+		<style>
+			selector {
+				property: value;
+			}
+		</style>
+	</head>
+	
+YOu can also add style directly to elements, but this is not recommended unless you need a single uniquly styled element.
+	<body>
+		<div style="color: white; background-color: black;"> .. </div>
+	</body>

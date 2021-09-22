@@ -1,7 +1,7 @@
 git
     git clone git@github.com:user/repo-name.git
     git status
-    git push origin making
+    git push origin main
     git commit -m "Note"
     
     Commit early and often.  Everytime there is a large change, commit.
