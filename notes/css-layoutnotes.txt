@@ -1,0 +1,150 @@
+inspector
+
+Layout
+Boxes
+Webpages are made up of nested and stacked boxes.
+
+Use:
+ * {
+border: 2px solid red;
+}
+
+to see all of the boxes in action
+
+A standard model box is itself made up of 4 nested elements. (from inside to out)
+-Content:size = css: width and css: height
+-padding: distance between border and content.  css: padding
+-border: distance between the padding and the margin.  css: border
+-margin: distance between border and other margins.  css: margin
+
+the size of a standard box is (width + 2x padding + 2 x border)
+
+CSS also has alternative box model.  THis makes the width of the box equalt to the height and width
+
+activate using below on a single element
+
+.box {
+	box-sizing: border-box;
+}
+
+or this to apply to entire page
+
+html {
+  box-sizing: border-box;
+}
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+Margin property accepts four argments
+If only one is set all four get set to the same side
+If two are set than you get a rectanle (top-bottom left-right)
+If three are set it is top left-right bottom
+
+Any individual margin can be set with long hand:
+margin-top
+margin-right
+margin-left
+margin-bottom
+
+ALl is the same for padding
+four arguments and long hand:
+padding-top
+padding-right
+padding-bottom
+padding-left
+
+Auto
+setting a value to margin lets the browser figure it out for you
+Good for horizantal cenetering ONLY
+
+When margin collide they combine to one margin
+-if both margins are positive, it becomes the larger of the two margins
+-if one margin isnegative, it becomes the largeer subtract the smaller
+-if both are negative, it becomes the smallest of the two margins.
+
+Can get super granular on the border.
+-control side individually
+border-top
+border-right
+border-bottom
+border-left
+
+-control properties of entire box individually
+border-width
+border-style
+border-color
+
+-Can control each item individually for a box
+border-top-width
+border-top-style
+border-top-color
+border-right-width
+border-right-style
+border-right-color
+border-bottom-width
+border-bottom-style
+border-bottom-color
+border-left-width
+border-left-style
+border-left-color
+
+
+
+
+Block vs Inline
+
+defulat for most elements is:
+display: block;
+
+Block elements are rendered stacked on top of each other, each elements on a new line.  Blocks grow to fit into their parent container.
+
+Inline elements get rendered next to each other on the same line.  Sizre of inline elements just matches their content
+-Padding and margin do not work well on inline elements
+
+Inline-block behave like inline but can be padded.  
+Not super common, generally use flex box instead
+
+**FLEX
+One of the most commom modern ways to arrange a page.
+
+-Anything that lives inside of a flec container is a flex item.  
+-You can build up complicated layout by nesting flex laytouts within each other.
+
+-Make a container a flex container with:
+display: flex;
+
+flex properties:
+-flex: flex-grow flex-shrink flex-basis;
+	default-flex: 0 1 auto (Default flex properties)
+	flex: 1; => flex: 1 1 0% 
+		-(Most common flex pattern and the values that you 			are setting.)
+		-Setting all items to this will make all items the same size
+
+-flex-grow: integer; Grow factor.  Higher makes item grow more relative to other rates.  0 means it is fixed.
+-flex-shrink: integer;  Similar to grow, but only applies when the items are larger than the container and shrinks the item instead of growing it.  0 means item will NOT shrink.
+-flex-basis: %; Inital size to base the change rates on.  0 ignores the items size.  auto starts with the items size.
+
+-flex items work in two axes row and column.  default is row/horizantal but can switch to column or vertical with:
+flex-direction: column;
+
+-Block elelements default to the width of their paremt but the height of their content.  Can make flexes tricky in the vertical plane, as they disapear
+
+-justify-content: space-between; aligns items across the main axes (flex-start, flex-end, center, space-around, space-between, space-evenly)  
+	-To make uneven spaces you can add a mrgin-left: auto to a flex item to 	force it tot he right
+
+-align-items: stretch; Aligns items along the cross axis. (stretch, flex-start, flex-end, center, baseline, )
+
+-align-self: flex-start; USe to change one items alignment in the flex
+
+if you wrap your flex items then use:
+
+-align-content: space-around; Control the alignment of the wrapped rows (flex-start, flex-end, center, space-between, space-around, stretch, space-evenly)
+
+-In a default flex justify-content adjusts horizantal and align-item adjusts vertical spacing.
+
+-gap: xnpx; adds a gap between all items similar to margin, but specific for flex items.
+
+-flex-direction: row-reverse; (row, row-reverse, column, column-reverse)
+-flex-wrap: wrap;
+-flex-flow: flex-direction flex-wrap; (short hand for the previous two properties)
