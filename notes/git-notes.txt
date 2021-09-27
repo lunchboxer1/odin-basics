@@ -7,5 +7,7 @@ git
     Commit early and often.  Everytime there is a large change, commit.
 
     Then push at natural stopping points.
+    
+    
 
 
