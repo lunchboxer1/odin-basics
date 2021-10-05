@@ -1,0 +1,126 @@
+simplest way to inline some JS
+
+Embed it inside of some <script> tags in the html doc
+
+Variables
+
+Typically use
+
+var
+
+New, can now use let or const
+
+
+Var and let do much the same thing.  Use let as its behavior is better
+
+Can use scientific notation
+
+let y = 123e5  or 123e-5
+
+Numbers are always 64 bit floating point by default
+
+Can have a maximum of 17 decimal points.  Can be better to multiply and divide to avoid floating point hell. (multiply everythuing by ten, then divide for your final answer.)
+
++ is for addition and concetation
+
+JS will do hybrid where possible, will add numbers than concentate a string to that
+
+JS interpreter works from left tot right.
+
+JS will try to convert strings to umbers then do the math on them.
+
+
+NaN = not a Numebr.  JS will throw this when trying to do math with strings.
+
+isNaN() to check.
+
+Infinity and -Infinity both work (2/0 returns infinity)
+
+Hex is 0xNN
+
+Numebrs have .ToString() Methiod  .toString takes number base as an argument.Base 2 to 36.
+
+Can make numebrs objects, but do not do this.
+
+== expects equality in both type and value.
+
+Operators
++, -, *, **, /, %, ++, --
+
+ALso has all of the logical operators
+>, <, =<, =>, !=, &&, ||, |, &, +=, -=, *=, /=, !, <<, >>, ~, ^
+
+
+Operators follow PEMDAS order
+
+
+Data Types
+THere are 8 types, and any of them can go into a variable.
+
+-Number (2^53-1)
+	-Has built in .toString(); with the bases
+-BigInt ANy arbitray Length
+	Add n to the end of a number to denotate.
+-String
+	-'' or "" are the same and used for generic strings.  Can switch between them to 'escape' the other type insie a string
+	- Can also just \', \" to escape
+	-`` are specail and used to embed variables and expressions in ${}
+	-+ to concantate.  Can concantate variables and stings
+	-See concantate section
+	-Can use Number(string) to convert to number
+	-Template literals (string formatting) syntax
+		let output  = 'I like the song "${ song }".  I gave is a score of ${ score/highestScore * 100}';
+		examReport = `You scored ${ examScore }/${ examHighestScore } (${ Math.round(examScore/examHighestScore*100) }%). ${ examScore >= 49 ? 				'Well done, you passed!' : 'Bad luck, you didn\'t pass this time.' }`;
+		that syntax? output = ' ${ score > 50 ? 'Passed!' : 'Failed' }';
+		-These respect newlines so you dont need to worry about those.
+-Boolean
+	-true or false
+-null
+	-represents nothing
+-undefined
+	-variable is not set
+-object
+	-stores multiple things under one name
+-symbol
+	-for unique identifiers declared with Symbol("")
+-typeof
+	-returns the type of the variable
+	
+	
+Conditonals
+-Comparisons
+	Comparing strings, compares the unicode of each cahr left to right
+	Comparing different types, JS tries to convert them to numbers and do the comparison
+	
+	=== is strict equality.  compares the two items WITHOUT any type conversions.
+	!== strict not equality.
+	
+	null compares to 0, undefined compares to NaN
+	
+	THere are a bunch of weird cases here,  If I get into the weeds on conditonals find a good reference and double check.
+	Some rules of thumb to avoid most complications
+		-Treat any comparison to undefine/null with extra care
+		-Dont use >=, >, <, <= with a variable that may be null/undefined.  Leads to trouble.  Just chaeck that first and handle seperately.
+
+-If
+	if (condition) {
+	}
+	
+	if (condition) {
+	} else {
+	}
+	
+	if (condition1) {
+	} else if (condition2) {
+	} else {
+	}
+	
+	switch (expression) {
+		case x:
+			break;
+		case y:
+			break;
+		default:
+	}
+
+
