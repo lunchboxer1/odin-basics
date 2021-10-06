@@ -23,7 +23,55 @@
             let max = 57
             let actual = max - 13
             let percentage = actual / max
+
+            let target = 7
+            let num = (target) => target + 7;
+            console.log(num(95))
+
+            function add7(num){
+                return num + 7;
+            }
+
+            console.log(add7(7))
+
+
+            let multiply = (a, b) => a * b;
             
+            console.log(multiply(4, 4))
+
+            let capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1)
+
+            console.log(capitalize("jyOke"))
+
+            let lastletter = (str) => str.slice(-1)
+
+            console.log(lastletter('dilfd!'))
+
+
+            //Fizz buzz starts here
+            let userInput = parseInt(prompt("Enter FB numer:"))
+            console.log(userInput)
+
+            for (let i = 1; i <= userInput; i++){
+                //console.log(i)
+                if (i % 3 == 0 && i % 5 == 0){
+                    console.log('FizzBuzz')
+                } else if (i % 3 == 0) {
+                    console.log('Fizz');
+                } else if (i % 5 == 0) {
+                    console.log('Buzz');
+                } else {
+                    console.log(i);
+                }
+                
+            }            
+
+
+
+
+
+
+
         </script>
     </body>
 </html>

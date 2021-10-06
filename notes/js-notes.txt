@@ -122,5 +122,102 @@ Conditonals
 			break;
 		default:
 	}
+	
+Ternary
+	Takes the place of a simple if else block
+	(condition) ? run this code(true) : run this code instead (false)
 
 
+
+Functions
+
+function functionName(param) {
+	console.log(param + "this function is dope")
+}
+
+funcationName("goats??");
+
+Arrow Function (just a 'simpler' way to write funcitons.
+
+let func = (arg1, arg2, ... argN) => expression
+
+thats the same as
+
+let func = function(arg1, arg2, .. argN) {
+ return expression;
+}
+
+Slick multiline finction
+
+let welcome = (age < 18) ?
+	() => alert('Hello') :
+	() => alert('Greetings');
+	
+let sum = (a, b) => {
+	let result = a + b;
+	return result;
+};
+
+
+
+
+Errors
+-Common error types
+-Syntax Error
+-Reference error: using variables that DNE or have not been declared
+-Type Error: 
+
+Tips for error correction
+-Read the error carefully, and try to parse it out
+-Google the error
+-Use the debugger
+-Console.log()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+FOr loop
+for (let i = 1; i <= condition; i==) {
+	expressions
+}

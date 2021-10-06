@@ -1,0 +1,40 @@
+A sketch for how to write programs/solve problems.  If I am ever stuck on a project than refer back to this do as a guide.
+
+This is the most essential skill of an effective succsesfull programmer.
+
+Use plain english and/or pseudo code to answer all of these questions
+
+Step 1: Understand the problem.
+Write out exactly what the problem is.  
+If you are not crystal clear than write it differently, or use diagrams or use paper, what ever it takes until the problem is crystal clear.  
+You know it is clear once you can exaplain the problem to someone else in palin english.
+
+Step 2: Plan
+Decide how to solve your problem.  Answer these questions.
+	-Is there a UI?  If so sketch that out, what is its functionality.
+	-What inputs will the program have.  
+	-Where will the data for the inputs come from?
+	-What are the desired outputs?
+	-Based on the inputs, what do you have to do to get to your outputs.  This is the algorithim design.
+		-Iterate psuedo coding this out
+	
+Step 3: Design and Divide
+Decomposition is the way to deal with complexity. This is really the key.  Break problems down until they are simple problems that you know how to do, than execute them/
+Psuedo code your solution.
+Break problems down into smaller problems until it is crystal clear
+Solve the simplest sub problems first (i.e. the ones that you know the answer to)
+Then start solving the problems that doesn't have any dependencies
+Finally connect all the solutions together and your problem is solved.
+
+Everytime you get stuck work the process and re divide.
+
+
+Stuck?
+-Follow the debug through the entire solution untill you see where theory and reality fall apart.
+-Reasses.  Try to look at the problem through a different lens.  Try to abstarct to a new approach.
+	-SOmetimes its best to delete and start over.
+-Reasearch.  Google it if your stuck
+	-Also try googling problems that you have solved to see if there is a bwtter way or some parts you ver looked.
+    
+
+
