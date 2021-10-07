@@ -70,7 +70,8 @@ THere are 8 types, and any of them can go into a variable.
 	-Can use Number(string) to convert to number
 	-Template literals (string formatting) syntax
 		let output  = 'I like the song "${ song }".  I gave is a score of ${ score/highestScore * 100}';
-		examReport = `You scored ${ examScore }/${ examHighestScore } (${ Math.round(examScore/examHighestScore*100) }%). ${ examScore >= 49 ? 				'Well done, you passed!' : 'Bad luck, you didn\'t pass this time.' }`;
+		examReport = `You scored ${ examScore }/${ examHighestScore } (${ Math.round(examScore/examHighestScore*100) }%). ${ examScore >= 49 
+		 				'Well done, you passed!' : 'Bad luck, you didn\'t pass this time.' }`;
 		that syntax? output = ' ${ score > 50 ? 'Passed!' : 'Failed' }';
 		-These respect newlines so you dont need to worry about those.
 -Boolean
@@ -172,6 +173,48 @@ Tips for error correction
 -Google the error
 -Use the debugger
 -Console.log()
+
+CLeam code
+You spend more time reading code than writing code.
+
+Rules of thumb
+-be consistent
+-always put semi colons even thouggh js compiler will mostly insert them for you
+-Limit length of lines to 80 charecters
+-Use descriptive anmes, use camelCase
+	-Variable names should start with nounds
+	-function names should start with verbs
+-Use proper indentation
+-Use comments judiciously to explain specific things, don't use to many and dont use them as a notes.
+
+--Arrays
+
+let name = []
+let name = ["c", ..... "z"]
+
+Built in methods
+
+.toString()	[converts to a CSV string]
+.join(seperator) [same as toString but specifiy seperator]
+
+
+pop items out of an array and push items into an array
+
+.pop() [Removes last element and returns it]
+.push() [adds an item to end of array and returns the new length
+.shift() [removes the first elements and moves all other elements lower, returns the removed item]
+.unshift() [adds element to begginng and moves all elements higher, returns new array length]
+
+.length() [duh]
+
+.splice(where, remove how many, new elem1....)	can use to remove items also
+
+let newArray = array1.concat(array2)  [combines arrays together, returns a new array, can take arbitray number of arguments, can also take strings]
+
+.slice(start, end) [returns a new array that only includes the sliced elements.
+
+
+
 
 
 
