@@ -213,6 +213,22 @@ let newArray = array1.concat(array2)  [combines arrays together, returns a new a
 
 .slice(start, end) [returns a new array that only includes the sliced elements.
 
+has .forEach method()
+
+array.forEach((item) => {
+	expression
+});
+	
+	
+has .includes method
+
+
+Loops
+break, immediately stops and breaks out of the loop
+continure, goes back to the beginining of the loop.
+
+
+
 
 
 
