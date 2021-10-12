@@ -30,3 +30,19 @@ div.appendChild(h1);
 div.appendChild(p);
 
 content.appendChild(div);
+
+const btn = document.querySelector('#btn');
+btn.onclick = () => alert('Hello World');
+
+const btn2 = document.querySelector('#btn2')
+btn2.addEventListener('click', () => {
+    alert("hello World");
+});
+
+btn2.addEventListener('click', function (e) {
+    console.log(e.target);
+});
+
+btn2.addEventListener('click', function (e) {
+    e.target.style.background = 'blue';
+});

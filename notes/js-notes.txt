@@ -228,6 +228,20 @@ break, immediately stops and breaks out of the loop
 continure, goes back to the beginining of the loop.
 
 
+RegEx
+
+regex expression literal between two back slashes: let re = /ab+c/
+
+or
+
+let re = new RegExp('ab+c')
+
+simple pattern allow EXACT mathcing for subsets of strings
+
+Can use these patterns with regexp.test(), exec()
+
+or String match(), replace(), search(), split()
+
 
 
 
