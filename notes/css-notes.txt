@@ -1,20 +1,23 @@
-fundamental css structure 
+**Cascading Style Sheets (CSS)
 
-selector {
-  property: value;
-}
+*Fundamental css structure 
 
-Selectors determine which items the property is going to effect.
+	selector {
+	  property: value;
+	}
 
-Common selectors
-	*: universal: selects all types
-	name: type selector; example = div as selector selects all divs.
-	class:  add the class attribute to any html element to have it selected by  css.  			Selector start with a (.)  elements can have multiple classes, seperated by 			white space
+	-Selectors determine which items the property is going to effect.
+
+*Common selectors
+	-*: universal: selects all types
+	-name: type selector; example = div as selector selects all divs.
+	-class:  add the class attribute to any html element to have it selected by  css.  Selector start with a (.)  elements can have multiple classes, seperated by 			white space
 		<div class = "alert-text"> </div>
 		.alert-text {
 			color: red;
 			}
-	id: same as class but uses id attribute and a # in the selector.  Avoid ids, they cause problems.
+	id: same as class but uses id attribute and a # in the selector.  
+		-Avoid ids, they cause problems.
 	grouping:  where selectors share multiple properties, you can combine them as a comma seperated list, and list there shared properties.
 		.read,
 		.unread {
@@ -31,36 +34,185 @@ Common selectors
 	descendant combinator:  selects ONLY the child of an element:  this can get confusing, use sparingly
 		.ancestor .contents {...}
 		
-Common properties
-	color: sets elements text color
+*Common properties
+	-color: sets elements text color
 		can accept: named color (red), hex(#ff0000), rgb(rgb(255, 0, 0)), hsl(hsl(0, 100%, 50%))
 	
-	background-color: sets elements background color
-	font-family: can be single or a comma seperated list.  if browser can't find this first one, it will go through the list.
-	font-size: set size of font: unit px (22px)
-	font-weight: set boldness of font: num between 1-1000 (700 is bold)
-	text-align: align text horizontally in an element: center, left, right
-	height, width: can apply to images: good practice to always declare these on a webpage.  this will reserve the space on the page for when the image loads in.
+	-background-color: sets elements background color
+	-font-family: can be single or a comma seperated list.  if browser can't find this first one, it will go through the list.
+	-font-size: set size of font: unit px (22px)
+	-font-weight: set boldness of font: num between 1-1000 (700 is bold)
+	-text-align: align text horizontally in an element: center, left, right
+	-height, width: can apply to images: good practice to always declare these on a webpage.  this will reserve the space on the page for when the image loads in.
 	
 
-cascade: the order in which styles get rendered.
-	when there are multiple styles, specificity comes into play.  the most SPECIFIC selector wins.  more selectors make it more specific.  the last item in the file is more the final determiner if all other factorrs tie.
-	
-To declare an external css file (most common method):
-	<head>
-		<link rel="stylesheet" href="styles.css" />
-	</head>
-	
-Declare internal css (good if style is only one page):
-	<head>
-		<style>
-			selector {
-				property: value;
+*Cascade: the order in which styles get rendered.
+	When there are multiple styles, specificity comes into play.  the most SPECIFIC selector wins.  more selectors make it more specific.  the last item in the file is 		more the final determiner if all other factorrs tie.
+
+*Decalring/linking Style sheets	
+	-External CSS file (most common method):
+		<head>
+			<link rel="stylesheet" href="styles.css" />
+		</head>
+		
+	-Internal CSS (good if style is specific to one page):
+		<head>
+			<style>
+				selector {
+					property: value;
+				}
+			</style>
+		</head>
+		
+	-Element CSS
+		-Not recommended unless you need a single uniquly styled element.
+		<body>
+			<div style="color: white; background-color: black;"> .. </div>
+		</body>
+
+**CSS Layouts 
+*Boxes
+	-Webpages are made up of nested and stacked boxes.
+	-To see all of the boxes that a page is built out of use:
+		 * {
+		border: 2px solid red;
+		}
+
+	-Standard Box Model
+		-A standard model box is itself made up of 4 nested elements. (from inside to out)
+		-Content:size = css: width and css: height
+		-Padding: distance between border and content.  css: padding
+		-Border: distance between the padding and the margin.  css: border
+		-Margin: distance between border and other margins.  css: margin
+
+		-The size of a standard box is (width + 2x padding + 2 x border)
+
+	-Alternative box model.
+		-CSS also has alternative box model.  This makes the width of the box equal to the height and width
+
+		-activate using below on a single element
+
+			.box {
+				box-sizing: border-box;
 			}
-		</style>
-	</head>
+
+		or apply to entire page
+
+			html {
+			  box-sizing: border-box;
+			}
+			*, *::before, *::after {
+			  box-sizing: inherit;
+			}
+
+	-Margin
+		-Margin property accepts four argments
+		-If only one is set all four get set to the same side
+		-If two are set than you get a rectanle (top-bottom left-right)
+		-If three are set it is top left-right bottom
+
+		-Any individual margin can be set with long hand:
+			margin-top
+			margin-right
+			margin-left
+			margin-bottom
+			
+		-When margin collide they combine to one margin
+			-If both margins are positive, it becomes the larger of the two margins
+			-If one margin isnegative, it becomes the largeer subtract the smaller
+			-If both are negative, it becomes the smallest of the two margins.
+
+	-Padding
+		-Works the same as margin
+		-Four arguments and long hand:
+			padding-top
+			padding-right
+			padding-bottom
+			padding-left
+
+	-Auto
+		-Setting a margin to auto lets the browser figure it out for you
+		-Good for horizantal cenetering ONLY
+
 	
-YOu can also add style directly to elements, but this is not recommended unless you need a single uniquly styled element.
-	<body>
-		<div style="color: white; background-color: black;"> .. </div>
-	</body>
+	-Border
+		-Can get super granular on the border.
+		-Control each side individually:
+			border-top
+			border-right
+			border-bottom
+			border-left
+
+		-control properties of entire box individually
+			border-width
+			border-style
+			border-color
+
+		-Can control each item individually for a box
+			border-top-width
+			border-top-style
+			border-top-color
+			border-right-width
+			border-right-style
+			border-right-color
+			border-bottom-width
+			border-bottom-style
+			border-bottom-color
+			border-left-width
+			border-left-style
+			border-left-color
+
+
+**Display Modes
+	-Default for most elements are:
+		-display: block;
+
+	-Blocks
+		-Block elements are rendered, stacked on top of each other, each elements on a new line.  
+		-Blocks grow to fit into their parent container.
+
+	-Inline
+		-Inline elements get rendered next to each other on the same line.  Size of inline elements just matches their content
+			-Padding and margin do not work well on inline elements
+
+	-Inline-block
+		-Inline-block behave like inline but can be padded.  
+			-Not super common, generally use flex box instead
+
+-Flex
+	-One of the most commom modern ways to arrange a page.
+
+	-Anything that lives inside of a flex container is a flex item.  
+	-You can build up complicated layout by nesting flex laytouts within each other.
+
+	-Make a container into a flex container with:
+		-display: flex;
+
+	-Common flex properties:
+		-flex: flex-grow flex-shrink flex-basis;
+			default-flex: 0 1 auto (Default flex properties)
+			flex: 1; => flex: 1 1 0% 
+				-(Most common flex pattern and the values that you are setting.)
+				-Setting all items to this will make all items the same size
+		-flex-grow: integer; Grow factor.  Higher makes item grow more relative to other rates.  0 means it is fixed.
+		-flex-shrink: integer;  Similar to grow, but only applies when the items are larger than the container and shrinks the item instead of growing it.  0 means 				item will NOT shrink.
+		-flex-basis: %; Inital size to base the change rates on.  0 ignores the items size.  auto starts with the items size.
+		-flex-direction: column;
+			-Flex items work in two axes row and column.  default is row/horizantal but can switch to column or vertical	
+		-Block elelements default to the width of their paremt but the height of their content.  Can make flexes tricky in the vertical plane, as they disapear
+		-justify-content: space-between; aligns items across the main axes (flex-start, flex-end, center, space-around, space-between, space-evenly)  
+			-To make uneven spaces you can add a mrgin-left: auto to a flex item to 	force it tot he right
+		-align-items: stretch; Aligns items along the cross axis. (stretch, flex-start, flex-end, center, baseline, )
+		-align-self: flex-start; USe to change one items alignment in the flex
+
+		if you wrap your flex items then use:
+
+		-align-content: space-around; Control the alignment of the wrapped rows (flex-start, flex-end, center, space-between, space-around, stretch, space-evenly)
+
+		-In a default flex justify-content adjusts horizantal and align-item adjusts vertical spacing.
+
+		-gap: xnpx; adds a gap between all items similar to margin, but specific for flex items.
+
+		-flex-direction: row-reverse; (row, row-reverse, column, column-reverse)
+		-flex-wrap: wrap;
+		-flex-flow: flex-direction flex-wrap; (short hand for the previous two properties)

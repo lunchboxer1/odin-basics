@@ -1,246 +1,365 @@
-simplest way to inline some JS
+**Java Script Notes
 
-Embed it inside of some <script> tags in the html doc
+*Internal
+	-Simplest way to add js to HTML file is to embed the code inside <script> tags.
 
-Variables
+*External
+	-Note: if script tag for your JS than put it at the bottom of the HTML so it can find the elements after the DOM has been rendered.
 
-Typically use
+	OR if seperate JS file
 
-var
+	(prferred)**
+	<head>
+		<script src="js-file.js" defer></script> (the defere tells browser to not load the script file until AFTER the html is loaded.
+	</head>
 
-New, can now use let or const
+*Variables
 
-
-Var and let do much the same thing.  Use let as its behavior is better
-
-Can use scientific notation
-
-let y = 123e5  or 123e-5
-
-Numbers are always 64 bit floating point by default
-
-Can have a maximum of 17 decimal points.  Can be better to multiply and divide to avoid floating point hell. (multiply everythuing by ten, then divide for your final answer.)
-
-+ is for addition and concetation
-
-JS will do hybrid where possible, will add numbers than concentate a string to that
-
-JS interpreter works from left tot right.
-
-JS will try to convert strings to umbers then do the math on them.
-
-
-NaN = not a Numebr.  JS will throw this when trying to do math with strings.
-
-isNaN() to check.
-
-Infinity and -Infinity both work (2/0 returns infinity)
-
-Hex is 0xNN
-
-Numebrs have .ToString() Methiod  .toString takes number base as an argument.Base 2 to 36.
-
-Can make numebrs objects, but do not do this.
-
-== expects equality in both type and value.
-
-Operators
-+, -, *, **, /, %, ++, --
-
-ALso has all of the logical operators
->, <, =<, =>, !=, &&, ||, |, &, +=, -=, *=, /=, !, <<, >>, ~, ^
-
-
-Operators follow PEMDAS order
-
-
-Data Types
-THere are 8 types, and any of them can go into a variable.
-
--Number (2^53-1)
-	-Has built in .toString(); with the bases
--BigInt ANy arbitray Length
-	Add n to the end of a number to denotate.
--String
-	-'' or "" are the same and used for generic strings.  Can switch between them to 'escape' the other type insie a string
-	- Can also just \', \" to escape
-	-`` are specail and used to embed variables and expressions in ${}
-	-+ to concantate.  Can concantate variables and stings
-	-See concantate section
-	-Can use Number(string) to convert to number
-	-Template literals (string formatting) syntax
-		let output  = 'I like the song "${ song }".  I gave is a score of ${ score/highestScore * 100}';
-		examReport = `You scored ${ examScore }/${ examHighestScore } (${ Math.round(examScore/examHighestScore*100) }%). ${ examScore >= 49 
-		 				'Well done, you passed!' : 'Bad luck, you didn\'t pass this time.' }`;
-		that syntax? output = ' ${ score > 50 ? 'Passed!' : 'Failed' }';
-		-These respect newlines so you dont need to worry about those.
--Boolean
-	-true or false
--null
-	-represents nothing
--undefined
-	-variable is not set
--object
-	-stores multiple things under one name
--symbol
-	-for unique identifiers declared with Symbol("")
--typeof
-	-returns the type of the variable
+	-Can declare variables with var, let or const
+	-var is depreciated so use the other two options
 	
+
+
+*+ Operator
+	-+ does both addition and string concentation
+	-JS will do hybrid where possible i.e. convert string numbers to numbers, then perform the addition on them
 	
-Conditonals
--Comparisons
-	Comparing strings, compares the unicode of each cahr left to right
-	Comparing different types, JS tries to convert them to numbers and do the comparison
+*Note??
+	Interpreter works from right to left
 	
-	=== is strict equality.  compares the two items WITHOUT any type conversions.
-	!== strict not equality.
+	NOTE>  Console.table to log a table.
+{}.filter(function(func_name)):
 	
-	null compares to 0, undefined compares to NaN
+*Operators/Key Words
+
+	-NaN = not a Numebr.  JS will throw this when trying to do math with strings.
+		-isNaN() returns bool based on result
+	-Infinity/-Infinity
+		-(2/0 returns infinity)
+	-Hex notation: 0xNN
+	-== 
+		-Checks equality in both type and value.
+	-+, -, *, **, /, %, ++, --
+		-ALl work typically except +
+	->, <, =<, =>, !=, &&, ||, |, &, +=, -=, *=, /=, !, <<, >>, ~, ^
+		-Logical operators, all work as expected
+
+
+	-Operators follow PEMDAS order.  There is an elaborate hierarchy, look it up online.
+
+
+*Data Types
+	-There are 8 types, and any of them can go into a variable.
+
+	-Number 
+		-(2^53-1)
+		-Can use scientific notaion
+			-let y = 123e5  or 123e-5
+		-Numbers are 64 bit floating point by default with a maximum of 17 decimal places
+			-Can be better to multiply and divide to avoid floating point hell. (multiply everything by ten, then divide for your final answer by ten.)
+		-.toString.  All numbers this method.  takes a base and returns a string. Base can be from 2 to 36.
+		-Numbers can be objects, but do NOT do this.				
+	-BigInt 
+		-Any arbitray Length
+		-Add n to the end of a number to denotate.
+	-String
+		-'' or "" are the same and used for generic strings.  Can switch between them to 'escape' the other type insie a string
+		- Can also just \', \" to escape
+		-`` are specail and used to embed variables and expressions in ${}
+		-+ to concantate.  Can concantate variables and stings
+		-See concantate section
+		-Can use Number(string) to convert to number
+		-Template literals (string formatting) syntax
+			let output  = 'I like the song "${ song }".  I gave is a score of ${ score/highestScore * 100}';
+			examReport = `You scored ${ examScore }/${ examHighestScore } (${ Math.round(examScore/examHighestScore*100) }%). ${ examScore >= 49 
+			 				'Well done, you passed!' : 'Bad luck, you didn\'t pass this time.' }`;
+			that syntax? output = ' ${ score > 50 ? 'Passed!' : 'Failed' }';
+			-These respect newlines so you dont need to worry about those.
+	-Boolean
+		-true or false
+	-null
+		-represents nothing
+	-undefined
+		-variable is not set
+	-object
+		-stores multiple things under one name
+	-symbol
+		-for unique identifiers declared with Symbol("")
+	-typeof
+		-returns the type of the variable
+		
+*Conditonals
+	-Comparisons
+		Comparing strings, compares the unicode of each cahr left to right
+		Comparing different types, JS tries to convert them to numbers and do the comparison
+		
+		=== is strict equality.  compares the two items WITHOUT any type conversions.
+		!== strict not equality.
+		
+		null compares to 0, undefined compares to NaN
+		
+		THere are a bunch of weird cases here,  If I get into the weeds on conditonals find a good reference and double check.
+		Some rules of thumb to avoid most complications
+			-Treat any comparison to undefine/null with extra care
+			-Dont use >=, >, <, <= with a variable that may be null/undefined.  Leads to trouble.  Just chaeck that first and handle seperately.
+
+	-If
+		if (condition) {
+		}
+		
+		if (condition) {
+		} else {
+		}
+		
+		if (condition1) {
+		} else if (condition2) {
+		} else {
+		}
+		
+	-Switch
+		switch (expression) {
+			case x:
+				break;
+			case y:
+				break;
+			default:
+		}
+		
+	-Ternary
+		Takes the place of a simple if else block
+		(condition) ? run this code(true) : run this code instead (false)
+		
+*Loops
+	-break
+		-immediately stops and breaks out of the loop
+	-continure
+		-goes back to the beginining of the loop.
 	
-	THere are a bunch of weird cases here,  If I get into the weeds on conditonals find a good reference and double check.
-	Some rules of thumb to avoid most complications
-		-Treat any comparison to undefine/null with extra care
-		-Dont use >=, >, <, <= with a variable that may be null/undefined.  Leads to trouble.  Just chaeck that first and handle seperately.
 
--If
-	if (condition) {
-	}
-	
-	if (condition) {
-	} else {
-	}
-	
-	if (condition1) {
-	} else if (condition2) {
-	} else {
-	}
-	
-	switch (expression) {
-		case x:
-			break;
-		case y:
-			break;
-		default:
-	}
-	
-Ternary
-	Takes the place of a simple if else block
-	(condition) ? run this code(true) : run this code instead (false)
+*Functions
+	-Standard Template
+		function functionName(param) {
+			console.log(param + "this function is dope")
+		}
 
+		funcationName("goats??");
 
+	-Arrow Function (just a 'simpler' way to write funcitons).
 
-Functions
+		let func = (arg1, arg2, ... argN) => expression
 
-function functionName(param) {
-	console.log(param + "this function is dope")
-}
+		is the same as
 
-funcationName("goats??");
+		let func = function(arg1, arg2, .. argN) {
+		 return expression;
+		}
 
-Arrow Function (just a 'simpler' way to write funcitons.
+		-Slick multi-line function template:
 
-let func = (arg1, arg2, ... argN) => expression
+			let welcome = (age < 18) ?
+				() => alert('Hello') :
+				() => alert('Greetings');
+				
+			let sum = (a, b) => {
+				let result = a + b;
+				return result;
+			};
 
-thats the same as
+*Best Practices
+-Errors
+	-Common error types
+		-Syntax Error
+		-Reference error: using variables that DNE or have not been declared
+		-Type Error: ??
+	-Tips for error correction
+		-Read the error carefully, and try to parse it out
+		-Google the error
+		-Use the debugger
+		-Console.log()
 
-let func = function(arg1, arg2, .. argN) {
- return expression;
-}
+	-Clean code
+		-You spend more time reading code than writing code.
 
-Slick multiline finction
+	-Rules of thumb
+		-Be consistent
+		-Always put semi colons even thouggh js compiler will mostly insert them for you
+		-Limit length of lines to 80 charecters
+		-Use descriptive anmes, use camelCase
+			-Variable names should start with nounds
+			-function names should start with verbs
+		-Use proper indentation
+		-Use comments judiciously to explain specific things, don't use to many and dont use them as a notes.
 
-let welcome = (age < 18) ?
-	() => alert('Hello') :
-	() => alert('Greetings');
-	
-let sum = (a, b) => {
-	let result = a + b;
-	return result;
-};
+*Arrays
+-Template
+	-let name = []
+	-let name = ["c", ..... "z"]
 
-
-
-
-Errors
--Common error types
--Syntax Error
--Reference error: using variables that DNE or have not been declared
--Type Error: 
-
-Tips for error correction
--Read the error carefully, and try to parse it out
--Google the error
--Use the debugger
--Console.log()
-
-CLeam code
-You spend more time reading code than writing code.
-
-Rules of thumb
--be consistent
--always put semi colons even thouggh js compiler will mostly insert them for you
--Limit length of lines to 80 charecters
--Use descriptive anmes, use camelCase
-	-Variable names should start with nounds
-	-function names should start with verbs
--Use proper indentation
--Use comments judiciously to explain specific things, don't use to many and dont use them as a notes.
-
---Arrays
-
-let name = []
-let name = ["c", ..... "z"]
-
-Built in methods
-
-.toString()	[converts to a CSV string]
-.join(seperator) [same as toString but specifiy seperator]
+-Built in methods
+	-.toString()	
+		-Converts to a CSV string
+	-.join(seperator) 
+		-Same as toString but specifiy seperator
 
 
-pop items out of an array and push items into an array
-
-.pop() [Removes last element and returns it]
-.push() [adds an item to end of array and returns the new length
-.shift() [removes the first elements and moves all other elements lower, returns the removed item]
-.unshift() [adds element to begginng and moves all elements higher, returns new array length]
-
-.length() [duh]
-
-.splice(where, remove how many, new elem1....)	can use to remove items also
-
-let newArray = array1.concat(array2)  [combines arrays together, returns a new array, can take arbitray number of arguments, can also take strings]
-
-.slice(start, end) [returns a new array that only includes the sliced elements.
-
-has .forEach method()
-
-array.forEach((item) => {
-	expression
-});
-	
-	
-has .includes method
 
 
-Loops
-break, immediately stops and breaks out of the loop
-continure, goes back to the beginining of the loop.
+	-.pop() 
+		-Removes last element and returns it
+	-.push() 
+		-Adds an item to end of array and returns the new length
+		-Pop items out of an array and push items into an array
+	-.shift() 
+		-Removes the first elements and moves all other elements lower, returns the removed item]
+	-.unshift() 
+		-Adds element to begginng and moves all elements higher, returns new array length]
+	-.length() 
+		-Duh
+	-.splice(where, remove how many, new elem1....)	
+		-Can use to remove items also
+	-.concat()
+		-let newArray = array1.concat(array2)  [combines arrays together, returns a new array, can take arbitray number of arguments, can also take strings]
+	-.slice(start, end) 
+		-Returns a new array that only includes the sliced elements.
+	-.forEach()
+		-array.forEach((item) => {
+			expression
+		});
+	-.includes()
 
 
-RegEx
+*Intermediate Array methods
+	-Very useful, will greatly increase JS abilities.
+	-.filter()
+		-Loop throug each item in the array and do something to that item.  returns a subset of the array that matchs your criteria
 
-regex expression literal between two back slashes: let re = /ab+c/
+		-const fifteen = inventors.filter(function(inventor) {
+			if(inventor.year >= 1500 && inventor.year < 1600)
+			});	
+	-.sort()
+		-perform your check and return 1 or -1 on each item.  this fiunction will bubble through the array aplying the list until each item bubbles into it's correct place.
+	-.map()
+		-Takes in an array, does something to it and returns an array with the same legnth (stamps it)
+	-.reduce()
+		-Builds a new thing from the exsisting thing?
+	-.some()
+		-Check if at lease ONE thing is what you are looking for
+	-.every()
+		-Check if every item is your condition
+	-.find()
+		-Like filter, but only returns one item that matches
 
-or
+	-findIndex()
+		-Like find but it finds the index of the item in question.
+	-spreads
+		-...
 
-let re = new RegExp('ab+c')
+*Regular Expressions (RegEx)
+	-A regex expression takes the form of a literal between two back slashes: 
+		-let re = /ab+c/
+	or
+		-let re = new RegExp('ab+c')
 
-simple pattern allow EXACT mathcing for subsets of strings
+	-RegEx are simple patterns that allow EXACT mathcing for subsets of strings
+	-Can use these patterns with regexp.test(), exec()
+	-For strings can use String match(), replace(), search(), split()
 
-Can use these patterns with regexp.test(), exec()
+*Document Object Model (DOM)
+	-Parent Child/Tree relationship between objects on the page
+	-Can select these objects in JS to manipulate them.
+	-Can use CSS or relationships to slect objects to manipulate them.
+		div.display
+		.display
+		#contatiner>.display
+		div#contatin>div.display
+-Relational selectors
+		-const container = document.querySelector('#contatiner');
+		-console.dir(container.firstElementChild);
+		-const controls = document.querySelectro('.controls');
+		-console.dir(controle.previosElementsSibling);
 
-or String match(), replace(), search(), split()
+	-Query Selectors
+		-element.querySelector(selector);  retirns reference to tje cirst match of selector
+		-element.querySelectorAll(seletors);  Returns a node list conteainin references to all of the matches of the selectors
+	    		-Can convert a nodelist to an array using Array.from() if you need to
+	    
+	-Element create
+		-const div = document.createELeement('div', [options])
+			-note, this only creates the element in memeory
+		
+	-parentNode.appendChild(childNode)  
+		-Adds the child node to the end of parent
+	-parentNode.InsertBefore(newNode, referenceNode) 
+		-inserts newNode into parent node before reference node
+
+	-parentNode.removeChild(child) 
+		-removes the child from the parent
+
+	-Altering elelemnts
+
+	-Have to get the reference first
+		-const div = document.createElement('div')
+
+	-examples of changing some styling
+		-div.style.color = 'blue';
+
+	-div.style.cssText = 'color: blue; background: white';
+
+	div.setAttributes('style', 'color: blue; background: white');
+
+	-If your accessing kebab case css, you need to use camel case instead
+
+	-Edit attributes (the parts inside the tags?)
+	-div.setAttribute('id;, 'theDiv')
+	-duv.getAttributes('id'); (would return 'theDiv')
+	-div.removeAttribute('id')
+
+-Classes
+	-div.classList.add('new');
+	-div.classList.remove('new');
+	-div.classList.toggle('active');
+		-cleaner to toggle css style on aand off rether than adding and removing them from the DOM
+	-Add text content (PREFEREED)
+		-div.textContent = 'Hello World';
+	-Add HTML content
+		-div.innerHTML = '<span>Hello World!</span>';
+
+-Events
+	-Can attach with:
+		-function directly on html element
+		-set on-event property on the DOM object 
+		-attach event listener to the nodes in your java script.
+
+	-Event listeners are the prefered method** But all three are regularly used.
+		-1: <button onclick="alert('Hello World')">Click Me</button>
+		-2: <button id="btn">Click Me</button>
+		const btn = document.querySelector('#btn');
+		btn.onclick = () => alert('Hello World');
+		-3:<button id="btn2">Click me 2</button>
+		const btn2 = document.querySelector('#btn2')
+		btn2.addEventListener('click', () => {
+		    alert("hello World");
+		});
+		-For all three methods.  you can call a function instead of embedding the code directly
+
+	-Can also get access to the event property (e)
+
+	-Can attach listeners to groups of nodes.  use item = quearySelectorAll("")
+	thenL item.forEach((item) => {
+		button.addEventListener('click', () => {
+		alert(button.id);
+		
+	-Some common events
+	-click, dblclick, keypress, keydown, keyup
+
+	-More selecting
+	-can use tag-name[attribute] to narrow down searches
+
+
+	-class list, adds a class to an aelement 
+		-can have additonal styling that you add onto an
+
+
 
 
 

@@ -1,3 +1,6 @@
+		
+**TDD
+
 *.spec.js file contains the tests
 
 run tests by running: npm test helloWorld.spec.js
