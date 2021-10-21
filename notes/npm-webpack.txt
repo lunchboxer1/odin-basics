@@ -1,0 +1,97 @@
+*NPM
+-Downloading a package
+	-npm install <name> //Install a generic package (adds it to node_modules)
+	-npm install @scope/name //
+	-npm install @scope/prinvate-name
+	-npm install name@beta //install the package version with specific tags
+	
+-package.json
+	-File that manages and controls all npm interactions with the project.
+	-Makes it easier to maintain dependincies without needing to continuously download the packages.
+	-Lists all your packages for the project, with the version you are using.
+	-Must contain 'name' and 'version'
+	-fields
+		"name" lowercase and oneword, required
+		"version" x.x.x, required
+		"author" name <name@email.com> (http://example.com)
+		
+	-Create with:
+		>npm init
+	-Can add a .npm-init.js file, to add to the defualt npm questions
+	-Create a default package.json:
+		>npm init --yes
+		
+	-Set default values:
+		>npm set init.author.email "name@email.com"
+		
+*Webpack
+	-Example of how to set up/quick start
+	-mk/nav to project folder
+	-npm init -y //Load the default package.json
+	-npm install webpack webpack-cli --save-dev //install webpack, the webpack CLI interface, and add those two items to the package.json as development dependencies
+	-Make the following project structure
+		-project
+			-package.json //npm file
+			-webpack.config.js	
+			-/src	//source code
+				-index.js
+			-/dist	//minimized and optomized code that goes to the webpage
+				-index.html //front page		
+	-Update packag.json
+		+"private": true,
+		-remove "main" line
+	-To include a package in a project/bundle
+		-install > npm install --save name
+		-import it in your js file
+	-Build the bundle.  This will generate the main.js to the dist file for your deliverable bundle
+		>npx webpack //Runs ./node_modeuls/.bin/webpack which was made when installe
+	-Config file can have a config file to set all of this up instead of having to enter a ton of CLI arguments
+		Run with> npx webpack --config webpack.config.js
+	-Run with
+		>npm run build //if the trick is set up (by default webpack will find the default named config file)
+		
+	-Place holder for a few other scrupts that I havent test out yet.
+		build: webpack --progress --mode=production
+		watch: webpack --progrss --watch	//will re-run the webpack everytime a change in the base.js file is deteced
+		
+		-Dev server
+			npm install webpack-dev-server --save-dev
+			
+			scripts
+				serve: webpack-dev-server --open //on index.js change will rebuild and refresh the broswer automatically (runs on localhost:8080)
+			>npm run serve
+			
+	-*webpack asset managemtn guide
+	-To load Css file
+	>npm install --save-dev style-loader css-loader
+		
+		
+		
+*ES6 Modules 
+	-Based around Imports/Exports
+	-imports tak in exports from other files
+		-Export template
+		const functionOne = () => console.log('function one!');
+		
+		export {functionOne };
+		
+		-Import template
+		import { functionOne } from './functionOne';
+		
+		functionOne();
+		
+		-if you want to export multiple functions
+		const functionOne =() => 'ONE';
+		const functionTeo = () => 'TWO';
+		
+		export {
+			functionOne,
+			functionTwo
+		};
+		
+		
+		import {functionOne, functionTwo} from './myModule';
+		
+		
+		
+		

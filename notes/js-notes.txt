@@ -359,7 +359,185 @@
 	-class list, adds a class to an aelement 
 		-can have additonal styling that you add onto an
 
-
+*Objects
+	-All functions are objects and all objects are function
+	-Template
+		const myObject = {
+			property1: 'Value',
+			property2: 'value',
+			"function property": function() {
+			}
+		}
+	-Members
+		-Acces with:
+			myOBject.property1
+			or
+			myObject['property1']
+	-Constructor
+		-function Player(name, marker) {
+			this.name = name
+			this.marker = marker
+			this.sayName = function() {
+				console.log(name) //note: don't put console logs in here
+			}
+		}
+		
+		-Instantiate
+			const player = new Player('steve', 'X')
+		
+	-Prototypes
+		-Common to all objects in JS.
+		-Prototype is the thing that the instantiated object inherits from
+		-Protoypres are how you do inheritance in JS.
+			-Create a fruit function/object with props and mthods.
+		-Essentially use ObjectName.prototype to add items onto the oriignal object?  
+		-If you are using constructors, it is best to define functions on the prototype of that object.
+			-If you declare the function on the constructor, than every time you instantiate the object, the funciton gets diplicates, wasting resources.
+			
+		Final template??
+			function Book(title, author, numPages, haveRead) {
+				this.title = title;
+				this.author = author;
+				this.numPages = numPages;
+				this.haveRead = haveRead;
+			}
+			
+			Book.prototype.info = function() {
+					return `${this.title} by ${this.author}, ${this.numPages}, ${this.haveRead? 'have read' : 'not read yet'}`
+				}
+				
+			const theHobbit = new Book('The Hobbit', JRR Tolkein', 1000, true);
+			console.log(theHobbit.info());
+			
+			
+			
+		-Prefered way to do inheritance today
+			function Student() {
+				
+			}
+			
+			Student.prototype.sayName = function() {
+				return(this.name)
+			}
+			
+			function EightGrader(name) {
+				this.name = name
+				this.grade = 8
+			}
+			
+			EIgthGrader.prototype = Object.create(Student.prototype)
+			
+			const carl = new EigthGrader('carl')
+			cral.sayName()
+			carl.grade
+			
+			
+	-Factory Functions:
+	*Constructors are not the prefered way.  They can cause some wonky behavior, and the factory function is prefereed.  Constructors are popular as thehy amtch up with other languages so be 			ready to see them.
+		-Template:
+		const personFactory = (name, age) => {
+			const sayHello = () => console.log('Hello!');
+			return { name, age, sayHello };		//Note this uses a short hand.  MUST be named exactsame as arguments
+		}
+		
+		const jeff = personFactory('jeff', 27);
+		
+		consol.log(jeff.name); //jeff
+		
+		jeff.sayHello();
+		
+		-Shorthand Template
+		
+		-Inheritance Example
+		const Person = (name) => {
+			const sayName = () => console.log(`my name is ${name}`)
+			return {sayName}
+		}
+		
+		const Nerd = (name) => {
+			const {sayname} = Person(name)
+			const doSOmethingNerdy = () => console.log('nerd studd')
+			return {sayName, doSOmethingNerdy}
+		}
+		
+		const jeff = Nerd('jeff')
+		
+		jeff.sayName()
+		jeff.doSomethingNerdy()
+		
+		
+		
+		
+	-Random Tip
+		const name = 'maynard'
+		const color = 'red'
+		
+		console.log({name, color); // {name: maynard, color: red}
+		
+	-Scope
+		-Globally scoped means scoped to the window (i think)
+		-Vars:  Are only function scoped OR globally scoped.
+		-Let / const: Are block scoped.  
+			-A block is essentially anything that gets curly braced.
+			-Use this to stop memory leaks and keep it organized.
+	-Closure
+		-THe idea that a function (which is also a class) has private memebers that can only accesed from within the function.
+		-ALways keep as much stuff as private as possible.  THis eliminates dependencies
+	
+	-Module Pattern
+		-The parenthesis somehow immedaitely invoke an instance of the class?
+		-Use this when you want to make ONE object, then immediately use it.  A nice way to organize your code.
+		-Template
+		const calculator = (() => {
+			const add = (a, b) => a + b;
+			const sub = (a, b) => a - b;
+			const mul = (a, b) => a * b;
+			const div = (a, b) => a / b;
+			
+			return {
+				add,
+				sub,
+				mul,
+				div,
+			};
+		})();
+		
+		//Note, no need to create an object
+		calculator.add(4,7);
+		
+		
+	-IIFE (immediately invoked function expression [ 'iffy' ]
+		-Template
+		(function () {
+		
+		})();
+		
+	-Classes: JS has classes implemented.  Really just a wrapper (syntactic sugar) over other functionality to ft JS in more with other languages.  Controversial, and not currently in fashion.
+		-template:
+			class MyClass {
+				constructor(name) {
+					this.name = name;
+				}
+				
+				get name() {
+					return this._name;
+				}
+				
+				set name(value) {
+					if(value.length < 4) {
+						alert("Name is too short.");
+						return;
+					}
+					this._name=value;
+				
+				sayHi() {
+					alert(this.name);
+				}
+				
+			let user = new MyClass("john");
+			user.sayHi();
+			user.name;
+			
 
 
 
