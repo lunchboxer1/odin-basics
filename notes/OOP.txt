@@ -1,0 +1,25 @@
+**OOP Principles
+
+-Rules of thumb for organizing projects into objects.
+
+-SOLID
+	-Single Responsibility
+		-Most important rule
+		-Do one thing and do it well.
+		-A class/object/module should only have ONE responsibility.
+		-Everything that a class does should be part of one responsibility
+		-After you write a function, look at it and see if there are things that you can take out and make into other functions (use a wrapper function to call multiple functions is ok.)
+	-Open-Closed Principle
+		-Modules should be open to extension, but closed to modification
+		-ROT: if i hav eto open the JS file and make a modification to extend it, it fails this test.
+	-Liskov Substitution Principle
+		-If it looks like a duck, quacks like a duck, but needs batteris you have the wrong abstraction
+	-Interface Segragation Principle
+		-Make as simple as possible to interface/use the module
+	-Dependency Inversion Principle
+		-Don't rely on one implementation?
+-Single Responsibility
+	
+	
+-Loosely coupled
+	-Every object should work independently from the other objects that you write.
