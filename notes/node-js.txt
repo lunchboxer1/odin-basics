@@ -1,0 +1,100 @@
+**Node-JS
+	-Node is a java script interpreter optomized for web type operations.
+	
+	*Running Scripts
+	>node app.js
+	-Can also embed this in a JS file so it will run automatically when opened
+		-First line of a JS file is the SHEBANG line.  tells the os what interpreter to use
+	>#!/usr/bin/node
+		or even better
+	>#!/usr/bin/env node
+		-Have to give app exe permission with
+		>chmod u+x app.js
+		
+	*ENV
+	-The dirty way to send data to a script
+	>USER_ID=2452345 USER_KEY=foobar node app.js
+	-The right way is to get from environment variable
+		-JS FIle
+		require('dotenv').config();
+		process.env.USER_ID
+		process.env.USER_KEY
+	-.env file
+		USER_ID="145143"
+		USER_KEY="foobar"
+		NODE_ENV="development"
+		
+	*Server
+		-Basic server implementation
+		const http = require('http')
+
+		const port = process.env.PORT || 3000
+
+		const server = http.createServer((req, res) => {
+		  res.statusCode = 200
+		  res.setHeader('Content-Type', 'text/html')
+		  res.end('<h1>Hello, World!</h1>')
+		})
+
+		server.listen(port, () => {
+		  console.log(`Server running at port ${port}`)
+		})
+		
+	*FS Module (file handling)
+	-built into node use with:
+		-const fs = require('fs')
+	-Methods are async by default but all have a sync mode
+	-ton o fbuilt in functions: https://nodejs.dev/learn/the-nodejs-fs-module
+	-write file example:
+		const content = 'content'
+		fs.writeFile('path', content, err => {  //or use a flag fs.writeFile('path', content, {flag: 'a+'}, err => {})
+			if (err) {
+			console.error(err)
+			retrun
+		}
+		-common flags
+			-r+: open for read and write
+			-w+: open for read and write, stream at start of file
+			-a: open file, stream at end of file
+			-a+: open file stream at end of file.
+		-append file method is useful
+		-It is generally better to use streams, as this way holds the program until the write is completed.
+	-Read file example:
+		fs.readFile('path', 'utf8', (err, data) => {
+			if(err) {
+				console.error(err)
+				retrun
+			}
+			console.log(data)
+		})
+		-has same problem, holds program until entire file is read, better to use streams
+	*URL
+		-const myURL = new URL('/foo', 'https://example.org/')  //(input, base
+		-URL is a type
+		-URL methods
+			-host: returns after //
+			-href: returns with https://
+			-df
+			-There is a method to handle every way a URL could be diced up. https://nodejs.org/api/url.html#url_the_whatwg_url_api
+	*Events Emitter
+		-front end is a lot of event handlers, backend has access to event emmitters
+		-Example:
+			const EventEmitter = require('events')
+			const eventEmitter = new EventEmitter()
+			
+		-on method:
+			eventEmmiter.on('start', () => {
+				console.log('started')
+			}
+			
+			Gets run after:
+			eventEmitter.emit('start')
+		-other moethods: once (only lisens for one hit then dies), remove listener/off (remove it/opposite of on) remove all listeners.
+	*Debuggind
+		-run with:
+			>node --inspect server.js
+			allows debuggers to attach
+		
+	
+	
+	

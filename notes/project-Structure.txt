@@ -1,0 +1,11 @@
+-Basic structure
+	-Matches the skeleton folder
+	-HTML file with
+	-css file
+	-js file
+	
+-Webpack structure
+	-matches the 
+	-src and dist foler
+	-html
+	-multiple js files
