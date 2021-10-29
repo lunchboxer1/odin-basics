@@ -1,0 +1,58 @@
+***MongoDB
+
+M103 to set up locally
+
+atlas:
+	-user: admin
+	-pass: wordpass
+	
+	
+-Structure
+	-Data is stored in BSON documents. 
+		-BSON is binary representation of JSON
+	-Document is effectively kust a JSON object
+		-ROughly equivalent to a row in SQL
+	-COllections are groups of documents
+		-Roughly equivalent to a table in SQL
+	-Every document MUST have an _id field which must be unique for every document.  Immutable, can set to anything you want except arrays. 
+	
+-CRUD
+	-Standard methods for interacting with databases
+	-Create
+		-insertOne()
+		-insertMany()
+			-If ordered is set to true, docs will be inserted in the order of the array.  If one fails, the rest of the insert operation will fail.
+	-Read
+		-findOne()
+			-finds the first doc that matches, only returns ONE document, even if it finds multiples
+			-takes an object, sending empty will return one document
+		-find()
+			-finds multiple documents.
+			-returns a cursor
+			-Cursor allows you to to traverse over the result of a query
+				-sort() method
+				-limit() 
+				-toArray()
+			
+	-Update
+		-updateOne()
+			-takes filter object and update object.
+			-Filter is same as the read object
+			-update has a bunch of update operators.
+				-Example: { $set: { "bed": 3}}
+				-set, min, max, inc, currentDate,mul, rename,
+	-Delete
+	
+-Comparison Query Operators
+	-Add to queries to narrow searchs.
+	Example: 
+		{ bedrooms: {$gte: 5}
+		}
+	-eq: equal to
+	-gt greater than
+	-gte: greater than or equal to
+	-in: in the array
+	-lt: less than
+	-lte: less than or equal to
+	-ne: not equal
+	-nin: matches none of the values specificed
