@@ -46,6 +46,12 @@ async function main() {
 
     //await findListingsWithMinBedsBathsAndMostRecentReviews(client, {minNumBeds: 2, minNumBaths: 2, maxNumResults: 5});
 
+    //await updateOneListByName (client, "Private Room in Bushwick", { bedrooms:2 });
+
+    //await upsertOneListingByName(client, "Cozy Cottage", { name: "Cozy Cottage", bedrooms: 2, bathrooms: 1 });
+
+    await updateAllListingsToHavePropertyType(client);
+
   //Error handling
   } catch (e) {
     console.error(e);
@@ -125,7 +131,68 @@ async function findListingsWithMinBedsBathsAndMostRecentReviews(client, {
 }
 
 //CRUD -U example
-function updateOneListByName () {
-  
+async function updateOneListingByName (client, nameOfListing, updatedListing) {
+  const result = await client.db("sample_airbnb").collection("listingsAndReviews")
+                  .updateOne({name: nameOfListing }, { $set: updatedListing });
+
+  console.log(`${result.matchedCount} document(s) matched the query criteria.`);
+  console.log(`${ result.modifiedCount} document(s) was/were updated.`);
 }
+
+async function upsertOneListingByName (client, nameOfListing, updatedListing) {
+  const result = await client.db("sample_airbnb").collection("listingsAndReviews")
+                  .updateOne({name: nameOfListing }, 
+                            { $set: updatedListing },
+                            { upsert: true });
+
+  console.log(`${result.matchedCount} document(s) matched the query criteria.`);
+
+  if (result.upsertedCount > 0) {
+
+      console.log(`One document was inserted with the id ${result.upsertedId._id}`);
+
+  } else {
+
+      console.log(`${result.modifiedCount} document(s) was/were updated.`);
+
+  }
+}
+
+async function updateAllListingsToHavePropertyType(client) {
+
+  const result = await client.db("sample_airbnb").collection("listingsAndReviews")
+
+                      .updateMany({ property_type: { $exists: false } },
+
+                                  { $set: { property_type: "Unknown" } });
+
+  console.log(`${result.matchedCount} document(s) matched the query criteria.`);
+
+  console.log(`${result.modifiedCount} document(s) was/were updated.`);
+
+}
+
+//CRUD -D example
+async function deleteListingByName(client, nameOfListing) {
+
+  const result = await client.db("sample_airbnb").collection("listingsAndReviews")
+
+          .deleteOne({ name: nameOfListing });
+
+  console.log(`${result.deletedCount} document(s) was/were deleted.`);
+
+}
+
+async function deleteListingsScrapedBeforeDate(client, date) {
+
+  const result = await client.db("sample_airbnb").collection("listingsAndReviews")
+
+      .deleteMany({ "last_scraped": { $lt: date } });
+
+  console.log(`${result.deletedCount} document(s) was/were deleted.`);
+
+}
+
+
+
 

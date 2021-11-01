@@ -1,0 +1,50 @@
+git
+    git clone git@github.com:user/repo-name.git
+    git status
+    git push origin main
+    git commit -m "Note"
+    
+    Commit early and often.  Everytime there is a large change, commit.
+
+    Then push at natural stopping points
+    
+    
+    Fork and branch workflow
+    
+    fork a repo
+    clone the forked repo locally
+    add a git remote for the original repo?
+    create a feature branch for new changes --Start here
+    make changes
+    commit change to change branch
+    push the branch to github
+    opena  pullr equest from the branch to the repo
+    clean up
+    
+switch to a and make? branch
+	git checkout -b rps-ui
+	
+Just switch branches
+	got checkout name
+	
+push branch to hub
+	git push origin rps-ui
+	
+Check what branch you are working in
+	git branch
+	
+Merge a branch*
+
+	-switch into the branch you want to merge INTO
+		>git checkout name
+	-merge the branches
+		>git merge target-name
+	-Check the stats
+		>git log
+	-Push
+		>git push origin name
+	-delete old branch locally
+		>git branch -d name
+	-delete branch from remote
+		>git push --delete origin name
+	
